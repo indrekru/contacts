@@ -1,6 +1,7 @@
 package com.assignment.kontaktid.repository;
 
 import com.assignment.kontaktid.model.Contact;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -34,6 +35,7 @@ class ContactRepositoryImplTest {
 	}
 
 	@Test
+	@DisplayName("saves and finds all contacts")
 	void savesAndFindsAllContacts() {
 		contactRepository.save(Contact.builder()
 						.name(randomUUID().toString())
