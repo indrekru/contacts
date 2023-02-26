@@ -19,6 +19,7 @@ public class ContactApiController {
     private ContactRepository contactRepository;
 
     @GetMapping
+    @CrossOrigin(origins = "http://localhost:3000")
     public List<ContactDto> findAllContacts() {
         contactRepository.save(Contact.builder()
                 .name(randomUUID().toString())

@@ -7,7 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class KontaktidApplication {
 
 	public static void main(String[] args) {
-		System.out.println("HERE!");
 		SpringApplication.run(KontaktidApplication.class, args);
 	}
 
