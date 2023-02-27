@@ -1,10 +1,12 @@
 # Test
 
-Run 
+Run backend:
 1. docker-compose up
-2. ./gradlew build
-3. ./gradlew bootRun
-4. Go to http://localhost:8080/api/v1/contacts
+2. ./gradlew bootRun
+
+Run frontend:
+1. cd client
+2. npm install && npm start
 
 
 Cleanup:

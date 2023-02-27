@@ -21,16 +21,12 @@ public class ContactApiController {
     @GetMapping
     @CrossOrigin(origins = "http://localhost:3000")
     public List<ContactDto> findAllContacts() {
-        contactRepository.save(Contact.builder()
-                .name(randomUUID().toString())
-                .codeName(randomUUID().toString())
-                .phone(randomUUID().toString())
-                .build());
         return mapDto(contactRepository.findAll());
     }
 
-    @PutMapping
-    public void insertContact(@RequestBody CreateContactRequest request) {
+    @PostMapping
+    @CrossOrigin(origins = "http://localhost:3000")
+    public void saveContact(@RequestBody CreateContactRequest request) {
         contactRepository.save(Contact.builder()
                 .name(request.name())
                 .codeName(request.codeName())
