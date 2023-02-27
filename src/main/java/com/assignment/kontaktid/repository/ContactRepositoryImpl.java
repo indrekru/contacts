@@ -15,6 +15,7 @@ import java.time.Instant;
 import java.time.ZoneOffset;
 import java.util.Arrays;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.UUID;
 import java.util.stream.Collectors;
@@ -62,6 +63,13 @@ public class ContactRepositoryImpl extends NamedParameterJdbcDaoSupport implemen
     public List<Contact> findAll() {
         final String sql = "select * from " + TABLE + " where " + DELETE_TIME_IS_NULL;
         return getJdbcTemplate().query(sql, this::mapRow);
+    }
+
+    @Override
+    public List<Contact> findAllByIdsIn(List<UUID> ids) {
+        var params = Map.of("ids", ids);
+        final String sql = "select * from " + TABLE + " where id in (:ids) and " + DELETE_TIME_IS_NULL;
+        return getNamedParameterJdbcTemplate().query(sql, params, this::mapRow);
     }
 
     @Override
