@@ -2,7 +2,7 @@ package com.assignment.kontaktid.service;
 
 import com.assignment.kontaktid.model.Contact;
 import com.assignment.kontaktid.repository.ContactRepository;
-import com.assignment.kontaktid.utils.DecryptionService;
+import com.assignment.kontaktid.utils.EncryptionService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -15,17 +15,17 @@ import java.util.UUID;
 @RequiredArgsConstructor
 public class ContactService {
 
-    private final DecryptionService decryptionService;
+    private final EncryptionService encryptionService;
     private final ContactRepository contactRepository;
 
-    public List<Contact> findContactsLike(String query) {
+    public List<Contact> search(String query) {
         List<Contact> decryptedContacts = contactRepository.findAll().stream()
                 .map(contact -> {
                             try {
                                 return contact
-                                        .withName(decryptionService.decrypt(contact.name()))
-                                        .withCodeName(decryptionService.decrypt(contact.codeName()))
-                                        .withPhone(decryptionService.decrypt(contact.phone()));
+                                        .withName(encryptionService.decrypt(contact.name()))
+                                        .withCodeName(encryptionService.decrypt(contact.codeName()))
+                                        .withPhone(encryptionService.decrypt(contact.phone()));
                             } catch (Exception e) {
                                 log.warn("Failed decrypting values", e);
                                 throw new RuntimeException(e);

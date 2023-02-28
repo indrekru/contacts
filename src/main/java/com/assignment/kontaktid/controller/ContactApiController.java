@@ -41,7 +41,7 @@ public class ContactApiController {
     @GetMapping("/search")
     @CrossOrigin(origins = "http://localhost:3000")
     public List<ContactDto> search(@RequestParam("q") String query) throws Exception {
-        return mapDto(contactService.findContactsLike(query));
+        return mapDto(contactService.search(query));
     }
 
     private List<ContactDto> mapDto(List<Contact> contacts) {
