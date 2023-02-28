@@ -15,7 +15,7 @@ When docker is installed, we must run 2 processes in 2 terminal tabs: Backend an
 Open up the terminal window and go to the root of the project.
 1. docker-compose up -d
 2. ./gradlew build
-3. /gradlew bootRun
+3. ./gradlew bootRun
 
 ### Run frontend:
 You must have node and NPM installed.
