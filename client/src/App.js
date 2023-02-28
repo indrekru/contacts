@@ -118,9 +118,9 @@ export default function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p>
+        <h1>
           Kontaktid
-        </p>
+        </h1>
         <div>
           <button onClick={loadContacts}>
               Lae kontaktid
@@ -130,17 +130,17 @@ export default function App() {
               Uus kontakt
           </button>
           <br></br>
-          <input type="text" placeholder="Search..." value={query} onChange={doSearch}/>
+          <input type="text" placeholder="Otsi..." value={query} onChange={doSearch}/>
         </div>
         {/* List */}
         {data && data.map((item) =>
           <div key={item.id}>
             <div>-----------------------------</div>
-            {!item.decrypted && <button onClick={(e) => decrypt(item)}>Decrypt</button>}
-            <div>Item Id: {item.id}</div>
-            <div>Name: {item.name}</div>
-            <div>Code name: {item.codeName}</div>
-            <div>Phone: {item.phone}</div>
+            {!item.decrypted && <button onClick={(e) => decrypt(item)}>Dekrüpteeri</button>}
+            <div>Id: {item.id}</div>
+            <div>Nimi: {item.name}</div>
+            <div>Koodnimi: {item.codeName}</div>
+            <div>Telefoni number: {item.phone}</div>
           </div>
         )}
         {/* List end */}
@@ -148,19 +148,19 @@ export default function App() {
         {/* New contact */}
         {newContact &&
             <div>
-                <h3>Create new contact</h3>
+                <h3>Loo uus kontakt</h3>
                 <br></br>
-                <label>Name: </label>
+                <label>Nimi: </label>
                 <input id="name" type="text" value={newContact.name} onChange={handleChange} />
                 <br></br>
-                <label>Code name: </label>
+                <label>koodnimi: </label>
                 <input id="codeName" type="text" value={newContact.codeName} onChange={handleChange} />
                 <br></br>
-                <label>Phone: </label>
+                <label>Telefoni number: </label>
                 <input id="phone" type="text" value={newContact.phone} onChange={handleChange} />
                 <br></br>
-                {!newContact.encrypted && <button onClick={encrypt}>Encrypt</button>}
-                {newContact.encrypted && <button onClick={postContact}>Save to database</button>}
+                {!newContact.encrypted && <button onClick={encrypt}>Krüpteeri</button>}
+                {newContact.encrypted && <button onClick={postContact}>Salvesta andmebaasi</button>}
             </div>
         }
         {/* New contact end */}
